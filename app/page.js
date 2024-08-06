@@ -118,6 +118,7 @@ return (
             setItemName('')
             handleClose
 
+
           }}>
             Add
           </Button>
