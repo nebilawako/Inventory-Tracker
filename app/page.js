@@ -125,25 +125,19 @@ return (
         </Stack>
       </Box>
     </Modal>
-       {/* <Typography variant="h1">Inventory Management</Typography> */}
-       <Button variant="contained" onClick={() => {handleOpen()}}>
+    {/* <Typography variant="h1">Inventory Managementnp</Typography> */}
+    <Button 
+    variant="contained" 
+    onClick={()=>{
+      handleOpen()}}>
         Add New Item
-       </Button>
-       <Box border="1px solid #333">
-        <Box  
-          width="800px"
-          height="100px"
-          display="flex"
-          bgcolor="#ADD8E6"
-          alignItems="center"
-          justifyContent="center"
-          >
-         <Typography variant="h2" color="#333">
-          Inventory Items
-
-         </Typography>
+      </Button>
+      <Box border ="1px solid #333">
+        <Box width="800px" height="100px" bgcol or="ADD8E6" display="flex" alignItems="center" justifyContent="center">
+        <Typography variant="h2" color="#333"> Inventory Items</Typography>
         </Box>
-       </Box>
+        
+      </Box>
   </Box>
 )
 }
