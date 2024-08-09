@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState,useEffect } from "react";
 import { firestore } from "@/firebase";
-import { Box, Stack, Typography, Button, Modal, TextField,Map } from '@mui/material'
+import { Box, Stack, Typography, Button, Modal, TextField } from '@mui/material'
 // import { getDocs, query } from "firebase/firestore";
 import {
   collection,
@@ -13,7 +13,7 @@ import {
   setDoc,
   deleteDoc,
   getDoc,
-  map
+  
 } from 'firebase/firestore';
 
 export default function Home() {
@@ -138,17 +138,24 @@ return (
         <Typography variant="h2" color="white"> Inventory Items</Typography>
         </Box>
         
-      </Box>
+
       <Stack width="800px" height="300px" spacing={2} overflow="auto">
         {
           inventory.map(({name,quantity})=>(
-            <Box key={name} width="100%" minHeight="150px" display="flex" alignItems="center" justifyContent="center" bgcolor="white" padding={5}  >
+            <Box key={name} width="100%" minHeight="150px" display="flex" alignItems="center" justifyContent="space-between" bgcolor="white" padding={5}  >
               <Typography variant="h3" color="black" textAlign="center"> {name.charAt(0).toUpperCase() + name.slice(1)}
               </Typography>
+              <Typography variant="h3" color="black" textAlign="center"> {quantity}
+              </Typography>
+              <Button variant="contained" onClick={ ()=>{removeItem(name)} }>Remove</Button>
+              
             </Box>
           ))
         }
       </Stack>
+      </Box>
+
+
       {/* <Stack width="800px" height="300px" spacing={2} overflow="auto">
   {inventory.map(({ name, quantity }) => {
     return (
