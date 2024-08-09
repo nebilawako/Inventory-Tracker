@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useState,useEffect } from "react";
 import { firestore } from "@/firebase";
-import { Box, Stack, Typography, Button, Modal, TextField } from '@mui/material'
+import { Box, Stack, Typography, Button, Modal, TextField,Map } from '@mui/material'
 // import { getDocs, query } from "firebase/firestore";
 import {
   collection,
@@ -13,6 +13,7 @@ import {
   setDoc,
   deleteDoc,
   getDoc,
+  map
 } from 'firebase/firestore';
 
 export default function Home() {
@@ -108,7 +109,7 @@ return (
         flexDirection="column"
         gap={3}
         sx={{transform: "translate(-50%,-50%)" }}>
-        <Typography variant="h6">Add Item</Typography>
+        <Typography variant="h6" color="black">Add Item</Typography>
         <Stack width="100%" direction="row" spacing={2}>
           <TextField variant="outlined" fullwidth value={itemName} onChange={(e) =>{setItemName(e.target.value)}}>
             
@@ -133,11 +134,43 @@ return (
         Add New Item
       </Button>
       <Box border ="1px solid #333">
-        <Box width="800px" height="100px" bgcol or="ADD8E6" display="flex" alignItems="center" justifyContent="center">
-        <Typography variant="h2" color="#333"> Inventory Items</Typography>
+        <Box width="800px" height="100px" bgcolor="ADD8E6" display="flex" alignItems="center" justifyContent="center">
+        <Typography variant="h2" color="white"> Inventory Items</Typography>
         </Box>
         
       </Box>
+      <Stack width="800px" height="300px" spacing={2} overflow="auto">
+        {
+          inventory.map(({name,quantity})=>(
+            <Box key={name} width="100%" minHeight="150px" display="flex" alignItems="center" justifyContent="center" bgcolor="white" padding={5}  >
+              <Typography variant="h3" color="black" textAlign="center"> {name.charAt(0).toUpperCase() + name.slice(1)}
+              </Typography>
+            </Box>
+          ))
+        }
+      </Stack>
+      {/* <Stack width="800px" height="300px" spacing={2} overflow="auto">
+  {inventory.map(({ name, quantity }) => {
+    return (
+      <Box
+        key={name}
+        width="100%"
+        minHeight="150px"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        bgcolor="white"
+        padding={5}
+      >
+        <Typography variant="h3" color="black" textAlign="center">
+          {name.charAt(0).toUpperCase() + name.slice(1)}
+        </Typography>
+      </Box>
+    );
+  })}
+</Stack> */}
+
+
   </Box>
 )
 }
